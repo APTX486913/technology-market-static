@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="css/zhuce.css">
+    <title>注册</title>
+</head>
+<body>
+<div class="b"></div>
+<div class="wrap">
+    <h1>注册</h1>
+    <p>请认真填写下面信息</p>
+    <form id="register" action="manage/register_manager.jsp" method="post">
+        <dl>
+            <dt><span>1</span>用 户 名：</dt>
+            <dd><input type="text" name="id" class="input_text"/></dd>
+            <dt><span>2</span>企业名称：</dt>
+            <dd><input type="text" name="name" class="input_text"/></dd>
+            <dt><span>3</span>输入密码：</dt>
+            <dd><input id="password" type="password" name="password" class="input_text"/></dd>
+            <dt><span>4</span>确认密码：</dt>
+            <dd><input type="password" name="password1" class="input_text"/></dd>
+        </dl>
+        <input type="submit" value="注 册" class="btn"/><br/><br/>
+        <input type="reset" value="重 置" class="btn"/>
+    </form>
+</div>
+</body>
+</html>

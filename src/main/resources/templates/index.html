@@ -1,0 +1,594 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8"/>
+    <title>吉林省高校科学技术展示平台</title>
+    <meta name="keywords" content="吉林省高校科学技术展示平台">
+    <meta name="description" content="吉林省高校科学技术展示平台">
+    <!--    <meta name="renderer" content="webkit">-->
+    <!--    <meta http-equiv="X-UA-Compatible" content="IE=edge">-->
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/base.css">
+    <link rel="stylesheet" href="css/index.css">
+    <link rel="stylesheet" href="layui/css/layui.css">
+    <script type="text/javascript" src="js/jquery-1.12.1.min.js"></script>
+    <script type="text/javascript" src="js/jquery.SuperSlide.2.1.1.js"></script>
+    <script type="text/javascript" src="js/tab.js"></script>
+    <script type="text/javascript" src="layui/layui.js"></script>
+</head>
+<body>
+<style>
+    body {
+        /*background: lightblue;*/
+    }
+
+    a {
+        cursor: pointer;
+    }
+    .list-display{
+
+    }
+    .list-display ul{
+        display: none;
+    }
+    .list-display:hover ul{
+        display: block;
+    }
+    .bay-window{
+        position: fixed;
+        width: 500px;
+        height: 200px;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        right: 0px;
+        background: linear-gradient(to bottom, red,black);;
+        opacity:0.65;
+        margin-right: 5px;
+        box-shadow: 0px 0px 5px #888888;
+    }
+    .bay-window .bay-window-head{
+        height: 20px;
+        margin-top: 7px;
+        color: #CCCCCC;
+        font-size: 10px;
+        line-height: 20px;
+    }
+    .bay-window-close{
+        float: right;
+        margin-right: 5px;
+        cursor: pointer;
+        font-size: 30px;
+    }
+    .bay-window-close:hover{
+        color: #888888;
+    }
+    .bay-window-body{
+        color: white;
+        padding: 10px 50px 10px 50px;
+        font-size: 34px;
+        text-align: center;
+        color: white;
+        cursor: pointer;
+        line-height: 60px;
+    }
+    .bay-a{
+        color: white;
+    }
+    .bay-a:hover{
+        color: blue;
+    }
+
+    /*select*/
+    .select-content{
+        position: absolute;
+        top: 20px;
+        z-index: 9999;
+        list-style: none;
+        background-color: white;
+        width: 100px;
+        text-align: center;
+        border-radius: 3px;
+        padding: 0;
+    }
+    .select-content li{
+        height: 30px;
+        line-height: 30px;
+        overflow: hidden;
+    }
+    .select-content ul{
+        /*height: 0px;*/
+        /*overflow: scroll;*/
+        display: none;
+        /*visibility: hidden;*/
+        /*opacity:0;*/
+        overflow-y: scroll;
+        max-height: 300px;
+        min-height: 0px;
+    }
+    .select-content:first-child{
+        display: block;
+    }
+    .select-content:first-child:hover{
+        color: #007FFF;
+        cursor: pointer;
+    }
+    .select-content:first-child:active{
+        color: #003EFF;
+        user-select: none;
+    }
+    ul{
+        list-style: none;
+        padding: 0px;
+        color: #000000;
+    }
+    ul li:hover{
+        cursor: pointer;
+        color: #007FFF;
+    }
+</style>
+<div class="bay-window">
+    <div class="bay-window-head">
+        <span class="bay-window-close">X</span>
+    </div>
+    <div class="bay-window-body">
+        <a href="/image/企业技术需求信息统计表.xlsx" class="bay-a" download="企业技术需求信息统计表（第一次发布）20200807">
+            企业技术需求信息表发布下载专区
+        </a>
+
+    </div>
+</div>
+<div class="w-all top">
+    <div class="w-main">
+        <a href="" class="toplogoa fl">
+            <!--            <img id="titleImg" src="img/111.png" height="120px" alt="">-->
+            <img id="titleImg" src="img/title.png" height="120px" alt="">
+        </a>
+        <div style="display: inline-block;margin-top: 20px">
+<!--            <select onchange="refresh_chooser()" id="dataform_chooser" class="form-control" style="padding:0px;display: inline-block;width:100px ;">-->
+<!--                <option value="RD" >-->
+<!--                    成果展示-->
+<!--                </option>-->
+<!--                <option value="CR">-->
+<!--                    企业需求-->
+<!--                </option>-->
+<!--                <option value="PR">-->
+<!--                    专家信息-->
+<!--                </option>-->
+<!--                <option value="PA">-->
+<!--                    专利信息-->
+<!--                </option>-->
+<!--                <option value="EF">-->
+<!--                    实验设备-->
+<!--                </option>-->
+<!--                <option value="INP">-->
+<!--                    创新平台-->
+<!--                </option>-->
+<!--                <option value="HPL">-->
+<!--                    项目信息-->
+<!--                </option>-->
+<!--                <option value="HS">-->
+<!--                    人文社科-->
+<!--                </option>-->
+<!--            </select>-->
+<!--            <select id="school_chooser" class="form-control" style="padding:0px;display: inline-block;width:100px ;">-->
+
+<!--            </select>-->
+<!--            <select id="type_chooser" class="form-control" style="padding:0px;display: inline-block;width:100px ;">-->
+
+<!--            </select>-->
+            <div>
+                <ul class="select-content" id="dataform_chooser" >
+                    <li class="li"><span class="iconfont icon-arrow-down icon-icon-arrow-down" style="float: left;margin-left: 10px;"></span><span id="dataform_text">成果展示</span></li>
+                    <ul id="dataform_opions">
+                        <li class="dataform_opion" value="RD">成果展示</li>
+                        <li class="dataform_opion" value="CR">企业需求</li>
+                        <li class="dataform_opion" value="PR">专家信息</li>
+                        <li class="dataform_opion" value="PA">专利信息</li>
+                        <li class="dataform_opion" value="EF">实验设备</li>
+                        <li class="dataform_opion" value="INP">创新平台</li>
+                        <li class="dataform_opion" value="HPL">项目信息</li>
+                        <li class="dataform_opion" value="HS">人文社科</li>
+                    </ul>
+                </ul>
+                <ul class="select-content" onclick="fn_school()" id="school_chooser" style="margin-left:105px">
+                    <li class="li"><span class="iconfont icon-arrow-down icon-icon-arrow-down" style="float: left;margin-left: 10px;"></span><span id="school_text">吉林大学</span></li>
+                    <ul id="school_opions" >
+                    </ul>
+                </ul>
+                <ul class="select-content" onclick="fn_type()" id="type_chooser" style="margin-left: 210px">
+                    <li class="li"><span class="iconfont icon-arrow-down icon-icon-arrow-down" style="float: left;margin-left: 10px;"></span><span id="type_text">默认</span></li>
+                    <ul id="type_opions">
+                    </ul>
+                </ul>
+            </div>
+
+        </div>
+
+        <!--        <input id="begin_time" type="date" value="1960-01-01" class="form-control;" style="display: inline-block;width:140px ;margin-top: 5px">-->
+        <!--        <span style="display: inline-block;background: black;width:20px;height:2px;position: relative;top:-4px;margin-top: 5px"></span>-->
+        <!--        <input id="end_time" type="date" value="2220-01-01" class="form-control;" style="display: inline-block;width:140px ;margin-top: 5px">-->
+
+        <div class="layui-input-inline">
+            <input  type="text" class="layui-input" id="time_chooser" placeholder=" - " style="width:305px; margin-top:55px; text-align: center">
+        </div>
+        <button id="nav_sdt" class="btn" onclick="SearchByType()" style="width: 305px;margin-top: 5px;background-color: white">搜索</button>
+    </div>
+</div>
+
+<div class="clear"></div>
+<div class="w-all navig">
+    <div class="w-main">
+        <ul id="head">
+            <li id="nav_sy" class="on">
+                <a><img src="img/shouye.png" alt="" class="imz">首页</a>
+            </li>
+            <li id="nav_cgxx" class="mainlevel list-display">
+                <a class="parentMenu"><img src="img/chengguoxinxi.png" alt="" class="imz">成果信息</a>
+                <ul id="nav_cgxx_sub_menu" class="childMenu"
+                    style="position:absolute;z-index:999;background-color:#3691d7;">
+                    <li id="nav_nycg" style="float: none;border-top: solid #d4d4d4 1px;"><a><img
+                            src="img/ligongchengguo.png" alt="" class="imz">农业成果</a></li>
+                    <li id="nav_yyjk" style="float: none;border-top: solid #d4d4d4 1px;"><a><img
+                            src="img/ligongchengguo.png" alt="" class="imz">医药健康</a></li>
+                    <li id="nav_swzz" style="float: none;border-top: solid #d4d4d4 1px;"><a><img
+                            src="img/ligongchengguo.png" alt="" class="imz">生物制造</a></li>
+                    <li id="nav_dzxx" style="float: none;border-top: solid #d4d4d4 1px;"><a><img
+                            src="img/ligongchengguo.png" alt="" class="imz">电子信息</a></li>
+                    <li id="nav_xnyqc" style="float: none;border-top: solid #d4d4d4 1px;"><a><img
+                            src="img/ligongchengguo.png" alt="" class="imz">新能源汽车</a></li>
+                    <li id="nav_xjzb" style="float: none;border-top: solid #d4d4d4 1px;"><a><img
+                            src="img/ligongchengguo.png" alt="" class="imz">先进装备制造</a></li>
+                    <li id="nav_xnykf" style="float: none;border-top: solid #d4d4d4 1px;"><a><img
+                            src="img/ligongchengguo.png" alt="" class="imz">新能源开发利用</a></li>
+                    <li id="nav_xcl" style="float: none;border-top: solid #d4d4d4 1px;"><a><img
+                            src="img/ligongchengguo.png" alt="" class="imz">新材料</a></li>
+                    <li id="nav_jnhb" style="float: none;border-top: solid #d4d4d4 1px;"><a><img
+                            src="img/ligongchengguo.png" alt="" class="imz">节能环保</a></li>
+                    <li id="nav_lgcg" style="float: none;border-top: solid #d4d4d4 1px;"><a><img
+                            src="img/ligongchengguo.png" alt="" class="imz">理工成果</a></li>
+                    <li id="nav_rwcg" style="float: none;border-top: solid #d4d4d4 1px;"><a><img
+                            src="img/renwenchengguo.png" alt="" class="imz">人文成果</a></li>
+
+                </ul>
+            </li>
+            <li id="nav_qyxq" class="list-display">
+                <a><img src="img/qiyexuqiu.png" alt="" class="imz">企业需求</a>
+                <ul id="nav_qyxq_sub_menu" class="childMenu"
+                    style="position:absolute;z-index:999;background-color:#3691d7;" >
+                    <li id="nav_jsxq" style="float: none;border-top: solid #d4d4d4 1px;"><a><img
+                            src="img/ligongchengguo.png" alt="" class="imz">技术需求</a></li>
+                    <li id="nav_rcxq" style="float: none;border-top: solid #d4d4d4 1px;"><a><img
+                            src="img/renwenchengguo.png" alt="" class="imz">人才需求</a></li>
+                    <li id="nav_jrfwxq" style="float: none;border-top: solid #d4d4d4 1px;"><a><img
+                            src="img/renwenchengguo.png" alt="" class="imz">金融服务需求</a></li>
+                </ul>
+            </li>
+            <!--            <li id="nav_xmxx">-->
+            <!--                <a><img src="img/xiangmuxinxi.png" alt="" class="imz">项目信息</a>-->
+            <!--            </li>-->
+            <li id="nav_zjxx">
+                <a><img src="img/zhuanjiaxinxi.png" alt="" class="imz">专家信息</a>
+            </li>
+            <li id="nav_zlxx">
+                <a><img src="img/zhuanlixinxi.png" alt="" class="imz">专利信息</a>
+            </li>
+            <li id="nav_sysb">
+                <a><img src="img/shiyanshebei.png" alt="" class="imz">实验设备</a>
+            </li>
+            <li id="nav_cxpt" class="mainlevel list-display">
+                <a class="parentMenu"><img src="img/cuangxinpingtai.png" alt="" class="imz">创新平台</a>
+                <ul id="nav_cxpt_sub_menu" class="childMenu"
+                    style="position:absolute;z-index:999;background-color:#3691d7;">
+                    <li id="nav_lgjd" style="float: none;border-top: solid #d4d4d4 1px;"><a
+                            class="dropdown-list"><img src="img/ligongjidi.png" alt="" class="imz">理工基地</a></li>
+                    <li id="nav_rwjd" style="float: none;border-top: solid #d4d4d4 1px;"><a
+                            class="dropdown-list"><img src="img/renwenjidi.png" alt="" class="imz">人文基地</a></li>
+                </ul>
+            </li>
+            <!--            <li id="nav_qyxq">-->
+            <!--            <a><img src="img/qiyexuqiu.png" alt="" class="imz">企业需求</a>-->
+            <!--        </li>-->
+            <li id="nav_xmxx">
+                <a><img src="img/xiangmuxinxi.png" alt="" class="imz">项目信息</a>
+            </li>
+            <li id="nav_rwsk" class="mainlevel list-display">
+                <a class="parentMenu"><img src="img/renwensheke.png" alt="" class="imz">人文社科</a>
+                <ul id="nav_rwsk_sub_menu" class="childMenu"
+                    style="position:absolute;z-index:999;background-color:#3691d7;">
+                    <li id="nav_rwcg1" style="float: none;border-top: solid #d4d4d4 1px;"><a
+                            class="dropdown-list"><img src="img/renwenchengguo.png" alt="" class="imz">人文成果</a></li>
+                    <li id="nav_rwjd1" style="float: none;border-top: solid #d4d4d4 1px;"><a
+                            class="dropdown-list"><img src="img/renwenjidi.png" alt="" class="imz">人文基地</a></li>
+                </ul>
+            </li>
+            <li id="nav_gxfc">
+                <a><img src="img/gaoxiaofengcai.png" alt="" class="imz">高校风采</a>
+            </li>
+        </ul>
+    </div>
+</div>
+<div class="clear"></div>
+<iframe id="external-frame"  src="/indexSmall" style="border: 0;" width="100%" >
+
+</iframe>
+<div class="clear"></div>
+<div class="w-all banquan">
+    <div class="banquan br">
+        <p>地址：吉林省长春市理工大学科技大厦 电话:0431-85583364 吉林省科技产业服务中心
+        </p>
+        <p>吉ICP 备14002627号</p>
+        <p id="visit">访问量：</p>
+    </div>
+</div>
+
+<!--<script src="js/index.js"></script>-->
+<script src="js/jquery-3.1.1.min.js"></script>
+<script src="/js/nav.js"></script>
+<script>
+    $(".bay-window-close").on("click",function () {
+        console.log("关闭小黄口")
+        $(".bay-window").hide(10);
+    });
+</script>
+<script>
+    var school_body=document.getElementById("school_opions");
+    var type_body=document.getElementById("type_opions");
+
+    //////
+    var dataform_value="RD";
+    var school_value="吉林大学";
+    var type_value;
+    set_dataform_chooer();
+
+    //生成学校select
+    $("#dataform_chooser").blur(function ()
+    {
+        alert("123");
+    });
+
+    // school_body.innerHTML="<option></option>";
+    $.ajax({
+        type: 'post',
+        url: "/api/suoshudanwei",
+        timeout: 15000,
+        dataType: "json",
+        data: {
+            getall:1,
+            pagesize:2,
+            page:1,
+        },
+        error: function (XMLHttpRequest, textStatus, errorThrown) {
+            alert("连接服务器失败，您当前的网络状态不佳，请检查您的网络连接！", "加载数据失败！");
+        },
+        success: function (data) {
+            if (data['status'] === 100) {
+                $.each(data['value'], function (index, item) {
+                    //ie不支持append的填充，使用innerhtml+=
+                    // name=item["name"];
+                    // var option=document.createElement("li");
+                    // option.innerText=item["name"];
+                    // // option.value=item["name"];
+                    // option.setAttribute("value",item["name"]);
+                    // option.classList="school_opion";
+                    //
+                    // school_body.append(option);
+                    var option='<li class="school_opion" value="'+item["name"]+'">'+item["name"]+'</li>';
+                    school_body.innerHTML+=option;
+                });
+                set_school_chooser();
+            }  else {
+                alert("获取数据出错！\n数据获取出现错误，请联系系统维护人员处理。");
+            }
+        }
+    });
+    refresh_chooser();
+
+    //刷新类型选择
+    var type_choose_url="/api/chengguoleixing";
+    var iframe_url="/cgxxxq?identity=";
+    function refresh_chooser(){
+        type_body.innerHTML="";
+        type_value="";
+        document.getElementById("type_text").innerText="默认";
+        // document.getElementById("type_chooser").removeEventListener('click',fn_type);
+        var typename="results_type";
+        // var objS = document.getElementById("dataform_chooser");
+        var TotalType = dataform_value;
+        if(TotalType=="RD")
+        {
+            type_choose_url="/api/chengguoleixing";
+            typename="results_type";
+            iframe_url="/cgxxxq?identity=";
+        }
+        else if(TotalType=="CR")
+        {
+            type_choose_url="/api/getXuqiuleixing";
+            typename="type";
+            iframe_url="/qyxqxq?identity=";
+        }
+        else if(TotalType=="PR")
+        {
+
+            type_choose_url="";
+            iframe_url="/zjxxxq?identity=";
+
+
+        }
+        else if(TotalType=="PA")
+        {
+            type_choose_url="/api/typezhuanli";
+            typename="patent_type_name";
+            iframe_url="/zlxxxq?identity=";
+        }
+        else if(TotalType=="EF")
+        {
+            type_choose_url="";
+            iframe_url="/sysbxq?identity=";
+        }
+        else if(TotalType=="INP")
+        {
+            type_choose_url="";
+            iframe_url="/cxptxq?identity=";
+        }
+        else if(TotalType=="HPL")
+        {
+            type_choose_url="";
+            iframe_url="/xmxxxq?identity=";
+        }
+        else if(TotalType=="HS")
+        {
+            type_choose_url="/api/socialtype";
+            typename="type";
+        }
+
+        //生成类型selec
+        // type_body.innerHTML="<option></option>";
+        $.ajax({
+            type: 'post',
+            url: type_choose_url,
+            timeout: 15000,
+            dataType: "json",
+            data: {
+
+            },
+            error: function (XMLHttpRequest, textStatus, errorThrown) {
+
+            },
+            success: function (data) {
+                if (data['status'] === 100) {
+                    $.each(data['value'], function (index, item) {
+                        //ie不支持append的填充，使用innerhtml+=
+                        // name=item["name"];
+                        // var option=document.createElement("li");
+                        // option.innerText=item[typename];
+                        // option.text=item[typename];
+                        // // option.value=item["id"];
+                        // option.setAttribute("value",item["id"]);
+                        // option.classList="type_opion";
+                        // type_body.append(option);
+                        var options='<li class="type_opion" value="/'+item["id"]+'">'+item[typename]+'</li>';
+                        type_body.innerHTML+=options;
+                    });
+                    set_type_chooser();
+                }  else {
+
+                }
+            }
+        });
+    }
+    //搜索筛选
+    function SearchByType()
+    {
+        var time = document.getElementById("time_chooser").value.split('-');
+        begin_time = time[0];
+        end_time = time[1];
+        console.log(dataform_value);
+        console.log(school_value);
+        console.log(type_value);
+        sessionStorage.removeItem('iframe_url');
+        sessionStorage.setItem("iframe_url", iframe_url);
+        var dataFrom = dataform_value;
+        var school = school_value;
+        var type = type_value;
+        // var begin_time=document.getElementById("begin_time").value;
+        // var end_time=document.getElementById("end_time").value;
+        sessionStorage.removeItem('dataFrom');
+        sessionStorage.setItem("dataFrom", dataFrom);
+        sessionStorage.removeItem('school');
+        sessionStorage.setItem("school", school);
+        sessionStorage.removeItem('type');
+        sessionStorage.setItem("type", type);
+        sessionStorage.removeItem('begin_time');
+        sessionStorage.setItem("begin_time", begin_time);
+        sessionStorage.removeItem('end_time');
+        sessionStorage.setItem("end_time", end_time);
+    }
+
+    // 时间选择器
+    layui.use('laydate', function() {
+        var laydate = layui.laydate;
+
+        //执行一个laydate实例
+        laydate.render({
+            elem: '#time_chooser'
+            ,type: 'datetime'
+            ,range: true
+            ,format: 'yyyy/MM/dd'
+            ,value:'1969/01/01 - 2220/01/01'
+        });
+    });
+    //初始化数据类型点击事件
+    function set_dataform_chooer()
+    {
+        document.getElementById("dataform_chooser").addEventListener("click",function(e){
+            this.isDisplay = !this.isDisplay;
+            if(this.isDisplay){
+                document.getElementById("dataform_opions").style.display = "block";
+            }else {
+                document.getElementById("dataform_opions").style.display = "none";
+            }
+        });
+        $(".dataform_opion").on("click",function(){
+            document.getElementById("dataform_text").innerText=this.innerHTML;
+            dataform_value=this.getAttribute("value");
+            refresh_chooser();
+        })
+    }
+
+    //初始化学校选择器点击事件
+    ///ie不支持addEventListener，采用onclick
+    var fn_school=function(e){
+        this.isDisplay = !this.isDisplay;
+        if(this.isDisplay){
+            document.getElementById("school_opions").style.display = "block";
+        }else {
+            document.getElementById("school_opions").style.display = "none";
+        }
+    }
+    function set_school_chooser()
+    {
+        // document.getElementById("school_chooser").addEventListener("click",function(e){
+        //     this.isDisplay = !this.isDisplay;
+        //     if(this.isDisplay){
+        //         document.getElementById("school_opions").style.display = "block";
+        //     }else {
+        //         document.getElementById("school_opions").style.display = "none";
+        //     }
+        // });
+        $(".school_opion").on("click",function(){
+            document.getElementById("school_text").innerText=this.innerText;
+            school_value=this.getAttribute("value");
+        })
+
+    }
+    ///初始化子类型点击事件
+    var fn_type=function(e)
+    {
+        if( document.getElementById("type_opions").style.display == "none"){
+            document.getElementById("type_opions").style.display = "block";
+        }else {
+            document.getElementById("type_opions").style.display = "none";
+        }
+    }
+    function set_type_chooser()
+    {
+        // document.getElementById("type_chooser").addEventListener("click",function(e)
+        // {
+        //     this.isDisplay = !this.isDisplay;
+        //     if(this.isDisplay){
+        //         document.getElementById("type_opions").style.display = "block";
+        //     }else {
+        //         document.getElementById("type_opions").style.display = "none";
+        //     }
+        // });
+        $(".type_opion").on("click",function(){
+            document.getElementById("type_text").innerText=this.innerText;
+            type_value=this.getAttribute("value").substring(1,3);//不加/的话，ie浏览器会把01字符串变成int型1，参数改变拉不到数据
+        })
+    }
+
+
+</script>
+</body>
+</html>

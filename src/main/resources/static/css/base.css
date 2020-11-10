@@ -1,0 +1,121 @@
+@charset "utf-8";
+/*css初始值*/
+body,div,span,a,ul,li,h1,h2,h3,h4,h5,h6,ul,li,dl,dt,dd,form,input,button,textarea,p,header,nav,select,option,ol,img{ border: 0px; margin: 0; padding: 0; font-family: "Microsoft YaHei";}
+ul,li{ list-style: none;}
+h1,h3,h4,h5,h6{ font-weight: normal;}
+h2{font-weight: normal;width: 100%;}
+a{ text-decoration: none; border: 0px;}
+input,textarea{ border: 0px;}
+img,select,option{ border: 0px;}
+
+.fl{ float: left;}
+.fr{ float: right;}
+.clear{ clear: both;}
+.dsbnone{ display: none;}
+.dsblock{ display: block;}
+.dsinline{ display:inline;}
+.ovhidden{ overflow: hidden;}
+.tx-ind{ text-indent: -9999px;}
+.ftf-s{ font-family: "宋体";}
+/*鼠标样式*/
+.curpter{ cursor: pointer;}
+/*文字溢出隐藏 start*/
+.one_hidden{overflow: hidden;text-overflow:ellipsis;white-space: nowrap;}
+.tw_hidden{display: -webkit-box;-webkit-box-orient: vertical;-webkit-line-clamp: 2;overflow: hidden;}
+.tr_hidden{display: -webkit-box;-webkit-box-orient: vertical;-webkit-line-clamp: 3;overflow: hidden;}
+.fu_hidden{display: -webkit-box;-webkit-box-orient: vertical;-webkit-line-clamp: 4;overflow: hidden;}
+.fw_hidden{display: -webkit-box;-webkit-box-orient: vertical;-webkit-line-clamp: 5;overflow: hidden;}
+/*文字溢出隐藏 end*/
+/*文本居中*/
+.text-l{ text-align: left;}
+.text-c{ text-align: center;}
+.text-r{ text-align: right;}
+/*margin*/
+.m-auto{ margin: 0 auto;}
+/*字体的粗细*/
+.font-b1{ font-weight: 100;}
+.font-b9{ font-weight: 900;}
+/*字体的大小*/
+.fs-8{ font-size:8px;}
+.fs-10{ font-size:10px;}
+.fs-12{ font-size:12px;}
+.fs-13{ font-size:13px;}
+.fs-14{ font-size:14px;}
+.fs-15{ font-size: 15px;}
+.fs-16{ font-size: 16px;}
+.fs-17{ font-size: 17.5px;}
+.fs-18{ font-size: 18px;}
+.fs-20{ font-size: 20px;}
+.fs-21{ font-size: 21px;}
+.fs-22{ font-size: 22px;}
+.fs-24{ font-size: 24px;}
+.fs-26{ font-size: 26px;}
+.fs-28{ font-size: 28px;}
+.fs-37{ font-size: 37px;}
+/*字体颜色*/
+.fc-1{color: #888888;}/*浅灰色*/
+.fc2{color: #666666;}/*浅灰色2*/
+.fc3{color: #000000;}
+/*width*/
+.w-all{ width:100%;min-width: 1100px;}
+.w-main{ width: 1100px;margin: 0 auto;}
+/*.xuanze{margin-left: 20px; list-style: left;margin-bottom: 20px; }
+#chengguomingcheng,#chengguozhanshi,#suoshudanwei,#pingjiashuiping,#pingjiafangshi{width:170px;font-size: medium;margin-top: 20px;}*/
+
+.h-30{width: 100%;height: 30px;}
+
+.wtongy{width: 20px;height: 100px;}
+/*头部div*/
+.top{border-bottom: solid #d3d3d3 1px;height:140px;}
+.top .toplogoa{margin-top: 18px;display: inline-block;}
+.top .yxnwtop{padding-top: 21px;padding-left: 30px}
+.top .yxnwtop a{display: inline-block;margin-left: 10px;}
+.top .yxnwtop a p{width: 60px;text-align: center;}
+.top .topseacher{height: 30px;margin-top:-2.5px;}
+.top .topseacher .nrinput{width: 152px;border:  solid #888888 0.5px;border-right:0;height: 26.5px;text-indent: 10px;}
+.top .topsubmit{background: url(../img/subbetlogo.png) no-repeat center;width: 33px;height: 29px;top: 0.5px;margin-left: -5px;}
+.navig ul li{float: left;line-height: 55px;cursor: pointer;}
+.navig ul li img{width: 20px;height: 20px;margin-right: 7px}
+.navig ul .on{background-color: #3691d7;}
+.navig ul li a{width: 109px;line-height: 20px;color: #040000;font-size: 16px;text-align: center;display: inline-block;border-right: solid #d4d4d4 1px;}
+.navig ul .on a{color: #ffffff;border-right: 0;}
+.navig ul li:hover{background-color: #3691d7;}
+.navig ul li:hover a{color: #ffffff;border-right: 0;}
+.navig ul li:last-child a{border-right: 0;}
+/*footer*/
+.footer{margin: 20px auto;}
+.selectdiv{width: 250px;height: 25px;background-color: #dfdfdf;margin-left: 10px;margin-top: 7px;}
+.selectdiv select  {
+	width: 203px;
+	height: 25px;
+  appearance:none;
+  -moz-appearance:none;
+  -webkit-appearance:none;
+  background: url("../img/arrow.png") no-repeat scroll right center transparent;
+  margin-left: 40px;
+  background-color: #dfdfdf;
+}
+.labeldiv{width: 250px;height: 25px;background-color: #dfdfdf;margin-left: 10px;margin-top: 7px; float: left;}
+.labeldiv input{width: 133px;
+    height: 20px;
+    appearance:none;
+    -moz-appearance:none;
+    -webkit-appearance:none;
+    background-color: #dfdfdf;}
+
+.selectdiv select::-ms-expand { display: none; }
+
+
+
+.banquan{height: 100px; background: #f5f5f5;margin-top: 0;display:table}
+.banquan.br{
+    display:table-cell;   vertical-align: middle;
+    font-size: 12px;color: #000000;line-height: 30px;text-align: center;
+    margin-top: 30px;
+padding: 0;
+list-style: none;
+text-decoration: none;
+font-family: "\5FAE\8F6F\96C5\9ED1", Microsoft YaHei UI, '????', Tahoma, Helvetica, Arial, "\5b8b\4f53", sans-serif;
+}
+/*高校left-contain*/
+.gxlc{width: 20%;}
